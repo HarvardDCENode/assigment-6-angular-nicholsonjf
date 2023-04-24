@@ -1,0 +1,54 @@
+{% extends 'base.njk' %}
+
+{% block content %}
+  <h1>Welcome to your personal travel blog!</h1>
+  <div><a href="/trips">View Trips</a></div>
+  <br>
+  <div><a href="/api-test">Test the trips API</a></div>
+  <p>
+    The trips API has the following endpoints:
+  </p>
+  <p>
+    Create a new trip:
+  </p>
+  <pre>
+    POST /api/trips
+    {
+        "name":"Washington",
+        "description":"Mom's Bday",
+        "startDate":"2022-05-23",
+        "endDate":"2022-05-30"
+    }
+  </pre>
+  <p>
+    Update a trip. You must include a "tripId" attribute in the post body. All attributes are required.
+  </p>
+  <pre>
+    POST /api/trips
+    {
+        "tripId": "643380bca977ac5c2de14ce6",
+        "name":"Washington",
+        "description":"Mom's Bday",
+        "startDate":"2022-05-23",
+        "endDate":"2022-05-30"
+    }
+  </pre>
+  <p>
+    List all trips.
+  </p>
+  <pre>
+    GET /api/trips
+  </pre>
+  <p>
+    Find a trip.
+  </p>
+  <pre>
+    GET /api/trips/:id
+  </pre>
+  <p>
+    Delete a trip.
+  </p>
+  <pre>
+    DELETE /api/trips/:id
+  </pre>
+{% endblock %}

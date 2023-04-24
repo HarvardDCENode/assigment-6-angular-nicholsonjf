@@ -1,0 +1,68 @@
+{% extends 'base.njk' %}
+
+{% block content %}
+    <h1>Trips</h1>
+    <button class="add-trip-btn" type="button">Add trip</button>
+    <div class="add-trip"> <!-- Start add trip -->
+        {% include "trip_form.njk" %}
+    </div> <!-- End add trip -->
+    <div class="trips"> <!-- Start display trips -->
+    {% for trip in trips %}
+        <div class="trip"> <!-- Start trip -->
+            <span class="trip-name">{{ trip.name }}</span>
+            <span>from {{ trip.startDate.toLocaleDateString()}} to {{ trip.endDate.toLocaleDateString()}}: </span>
+            <span>{{ trip.description }}</span>
+            <span>
+                <a href="#" class="update-trip-btn">Update</a>
+                <a href="/trips" data-id="{{ trip.id }}" class="delete-trip-btn">Delete</a>
+            </span>
+            <div class="update-trip"> <!-- Start update trip -->
+                {% include "trip_form.njk" %}
+            </div> <!-- End add trip -->
+        </div> <!-- End trip -->
+        <button class="add-activity-btn" type="button">Add activity</button>
+        <div class="add-activity"> <!-- Start add activity -->
+            <form action="/activities" method="post"> <!-- Start add activity form -->
+                <label for="name">Name</label>
+                <input
+                    id="name"
+                    type="text"
+                    name="name"
+                    value=""
+                /> <!-- Activity name input -->
+                <label for="description">Description</label>
+                <input
+                    id="description"
+                    type="text"
+                    name="description"
+                    value=""
+                /> <!-- Activity description input -->
+                <label for="startDate">Start Date</label>
+                <input
+                    id="date"
+                    type="date"
+                    name="date"
+                    value=""
+                /> <!-- Activity date input -->
+                <input
+                    id="tripId"
+                    type="hidden"
+                    name="tripId"
+                    value="{{ trip.id }}"
+                /> <!-- Activity tripId input -->
+                <input type="submit" value="Submit" /> <!-- New activity submit button -->
+            </form> <!-- End add activity form -->
+        </div> <!-- End add activity -->
+        <div class="activities"> <!-- Start activities -->
+            <h3>Activities</h3>
+            {% for activity in trip.activities %}
+                <div class="activity">
+                    <span class="activity-name">{{ activity.name }}</span>
+                    <span>on {{ activity.date.toLocaleDateString() }}: </span>   
+                    <span>{{ activity.description}}</span>
+                </div>
+            {% endfor %}
+        </div> <!-- End activities -->
+    {% endfor %}
+    </div> <!-- End display trips -->
+{% endblock %}
