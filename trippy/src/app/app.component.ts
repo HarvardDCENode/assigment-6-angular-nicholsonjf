@@ -86,5 +86,5 @@ export class AppComponent {
       startDate: new Date("2025-03-01"),
       endDate: new Date("2025-03-05")
     }
-  ]
+  ];
 }
