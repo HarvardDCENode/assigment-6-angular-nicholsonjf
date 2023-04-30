@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { TripComponent } from './trip/trip.component';
+import { TripsComponent } from './trips/trips.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/trips', pathMatch: 'full'},
@@ -14,6 +15,7 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     TripComponent,
+    TripsComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,9 @@
+<h3>Your trips:</h3>
+<div *ngIf="trips">
+  <ul>
+    <app-trip
+      *ngFor='let trip of trips'
+      [trip]="trip">
+    </app-trip>
+  </ul>
+</div>
